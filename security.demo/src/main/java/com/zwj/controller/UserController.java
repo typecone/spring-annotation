@@ -29,8 +29,8 @@ public class UserController {
 	
 	
 	//@RequestMapping(value ="/user1", method = RequestMethod.GET)
-    @GetMapping 
     @JsonView(User.userdetail.class)
+	@GetMapping("/user") 
 	public  List<User>  query(@RequestParam(name="username",required = false ,defaultValue="lisi") String nicname){
 		System.out.println(nicname);
 		List<User> users = new ArrayList<>();
@@ -57,7 +57,7 @@ public class UserController {
 	}
 	
 	
-	 @GetMapping(value ="/user/{id}")
+	@GetMapping(value ="/user/{id}")
 	public  List<User>  queryCondition(@PathVariable String id){
 		System.out.println(id);
 		List<User> users = new ArrayList<>();

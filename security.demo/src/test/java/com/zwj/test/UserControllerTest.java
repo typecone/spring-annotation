@@ -31,18 +31,18 @@ public class UserControllerTest {
 	
 	@Test
 	public void whenJsonview() throws Exception {
-		String temp=mockMvc.perform(MockMvcRequestBuilders.get("/user")
+		String temp=mockMvc.perform(MockMvcRequestBuilders.get("/user/user")
 				.param("username", "jojo")
 				.contentType(MediaType.APPLICATION_JSON_UTF8))
 		        .andExpect(MockMvcResultMatchers.status().isOk())
 		        .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(3))
-		        .andReturn().getResponse().getContentAsString();
-		System.out.println(temp);
+		       .andReturn().getResponse().getContentAsString();
+		   System.out.println(temp);
 	}
 	
 	@Test
 	public void whenQuerySuccess() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/user2")
+		mockMvc.perform(MockMvcRequestBuilders.get("/user/user2")
 				.param("username", "jojo")
 				.param("password", "123456")
 				.param("age", "123")
@@ -56,11 +56,12 @@ public class UserControllerTest {
 	
 	@Test
 	public void whenPathvariable() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/user/tom")
+		mockMvc.perform(MockMvcRequestBuilders.get("/user/user/tom")
 				.contentType(MediaType.APPLICATION_JSON_UTF8))
 		        .andExpect(MockMvcResultMatchers.status().isOk())
-		        .andExpect(MockMvcResultMatchers.jsonPath("$.username").value("lisi"));
+		        .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(1));
 	}
+	
 	
 	
 	
